@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="container">
+    <div class="header">
+      <h2 class="navbar-brand" (click)="onTitleClick()">
+        Movie Booking App
+      </h2>
+      <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6 text-right">
+        <i class="fas fa-user fa-2x user-icon" matTooltip="User bookings" (click)="navigateToUserBookings()"></i>
+        <span style="margin-left: 20px;"></span>
+        <button mat-button class="button" (click)="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="bg-blue py-4 footer">
+    <div class="row "> <small class="fottext">Copyright &copy; 2023. Cognizant FSE | Soundarya Raveendran</small>
+      <div class="social-contact ml-4 ml-sm-auto">
+      </div>
+    </div>
+  </div>
+</div>

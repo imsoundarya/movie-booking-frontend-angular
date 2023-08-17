@@ -1,0 +1,52 @@
+<div class="homepage-container">
+    <div class="button-container">
+        <button class="go-to-admin-button" *ngIf="userRole === 'admin';" (click)="goToAdminScreen()">Add / Update Movies</button>
+    </div>
+    <h2 class="page-title">Book Your Favorite Movie Now !</h2>
+ 
+    <div>
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="searchQuery" placeholder="Search For Movies"
+                (input)="onSearchChange()">
+        </mat-form-field>
+        <button mat-button class="button" (click)="searchMovie()">Search</button>
+    </div>
+    <div class="table-container">
+        <table class="movies-table">
+            <thead>
+                <tr>
+                    <th>Movie Name</th>
+                    <th>Theatre Name</th>
+                    <th>Tickets Available</th>
+                    <th>Action</th>
+                    <th *ngIf="userRole === 'admin'">Delete Movie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let movie of searchResults">
+                    <td>{{ movie.movieName }}</td>
+                    <td>{{ movie.theaterName }}</td>
+                    <td>{{ movie.totalTickets }}</td>
+                    <td>
+                        <ng-container *ngIf="movie.totalTickets > 0; else soldOutTemplate">
+                            <button class="btn btn-primary" (click)="openBookingDialog(movie)">Book</button>
+                            <div *ngIf="movie.showInputField">
+                                <input type="number" [(ngModel)]="movie.bookingCount" required min="1" max="10"
+                                    (input)="validateInput(movie)">
+                                <button class="btn btn-success" (click)="bookMovie(movie)"
+                                    [disabled]="!isInputValid">Confirm</button>
+                            </div>
+                            <div *ngIf="movie.showSuccessMessage">{{ movie.successMessage }}</div>
+                        </ng-container>
+                        <ng-template #soldOutTemplate>
+                            <span class="sold-out">Sold Out!</span>
+                        </ng-template>
+                    </td>
+                    <td *ngIf="userRole === 'admin'">
+                        <button class="btn btn-danger" (click)="deleteMovie(movie.movieId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

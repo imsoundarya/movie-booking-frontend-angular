@@ -1,0 +1,72 @@
+<mat-card class="register-card">
+    <mat-card-header class="header">
+        <mat-card-title>
+            <h2>Start Registration Today !</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form (ngSubmit)="register()" #registerForm="ngForm" class="register-form">
+            <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Username</mat-label>
+                <input matInput name="username" required [(ngModel)]="user.username" #username="ngModel"
+                    pattern="[A-Za-z][A-Za-z0-9]*" maxlength="30">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Email</mat-label>
+                <input matInput name="email" required [(ngModel)]="user.email" #email="ngModel"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+                <mat-error *ngIf="email.invalid && email.touched">
+                    Please enter a valid email address.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" required [(ngModel)]="user.password" #password="ngModel"
+                    pattern="^(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$">
+                <mat-error *ngIf="password.invalid && password.touched">
+                    must contain at least 6 characters & 1 special character.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Security Question</mat-label>
+                <mat-select name="securityQuestion" required [(ngModel)]="user.securityQuestion"
+                    #securityQuestion="ngModel">
+                    <mat-option value="q1">What is your nickname?</mat-option>
+                    <mat-option value="q2">What is the name of your pet?</mat-option>
+                    <mat-option value="q3">What is your dream destination?</mat-option>
+                </mat-select>
+                <mat-error *ngIf="securityQuestion.invalid && securityQuestion.touched">
+                    Please choose a security question.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Security Answer</mat-label>
+                <input matInput name="securityAnswer" required [(ngModel)]="user.securityAnswer"
+                    #securityAnswer="ngModel">
+                <mat-error *ngIf="securityAnswer.invalid && securityAnswer.touched">Security Answer is
+                    required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Role</mat-label>
+                <mat-select name="role" required [(ngModel)]="user.role"
+                    #role="ngModel">
+                    <mat-option value="customer">customer</mat-option>
+                    <mat-option value="admin">admin</mat-option>
+                </mat-select>
+                <mat-error *ngIf="role.invalid && role.touched">
+                    Please choose a Role.
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+        </form>
+        <div class="login-link">
+            <a routerLink="/login">Already User? Click here to login.</a>
+        </div>
+    </mat-card-content>
+</mat-card>

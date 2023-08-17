@@ -1,0 +1,41 @@
+.register-card {
+  max-width: 400px;
+  margin: 5px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  margin-bottom: 16px;
+}
+
+.registration-success-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-card {
+  margin: 0 auto;
+  margin-top: 22px;;
+  max-width: 400px;
+}
+
+.header {
+  padding: 16px;
+}
+
+.register-form {
+  margin-bottom: 16px;
+}
+
+.input-field {
+  margin-bottom: 8px;
+}
+
+.login-link {
+  margin-top: 16px;
+}

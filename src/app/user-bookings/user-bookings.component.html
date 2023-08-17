@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="content-wrapper">
+        <h2 class="page-title">Movie Booking Details</h2>
+        <div class="table-container">
+            <table class="movies-table" *ngIf="userRole === 'customer'">
+                <thead>
+                    <tr>
+                        <th>Movie Name</th>
+                        <th>Theatre Name</th>
+                        <th>Number of Tickets</th>
+                    </tr>
+                </thead>
+                <tbody class="scrollable-body">
+                    <tr *ngFor="let booking of bookings">
+                        <td>{{ booking.movieName }}</td>
+                        <td>{{ booking.theaterName }}</td>
+                        <td>{{ booking.numberOfTickets }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="movies-table" *ngIf="userRole === 'admin'">
+                <thead>
+                    <tr>
+                        <th>Booking Id</th>
+                        <th>Movie Name</th>
+                        <th>Theatre Name</th>
+                        <th>Number of Tickets</th>
+                        <th>User</th>
+                    </tr>
+                </thead>
+                <tbody class="scrollable-body">
+                    <tr *ngFor="let booking of bookings">
+                        <td>{{ booking.transactionId }}</td>
+                        <td>{{ booking.movieName }}</td>
+                        <td>{{ booking.theaterName }}</td>
+                        <td>{{ booking.numberOfTickets }}</td>
+                        <td>{{ booking.userId }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

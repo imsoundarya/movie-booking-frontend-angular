@@ -1,0 +1,61 @@
+.admin-screen {
+    display: flex;
+    height: 80vh;
+  }
+  
+  .admin-form-container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    /* background-color: #f1f1f1; */
+  }
+  
+  .admin-card {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .add-movie-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-field {
+    margin-bottom: 20px;
+  }
+
+  .header{
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .add-button {
+    align-self: center;
+  }
+  
+  .success-message {
+    margin-top: 20px;
+    text-align: center;
+    color: green;
+  }
+
+  .admin-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #f1f1f1; */
+  }
+  
+  .admin-content-inner {
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+
+   

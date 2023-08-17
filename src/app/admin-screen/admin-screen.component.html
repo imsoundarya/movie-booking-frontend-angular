@@ -1,0 +1,69 @@
+<div class="admin-screen">
+    <div class="admin-form-container">
+        <mat-card class="admin-card">
+            <mat-card-header class="header">
+                <mat-card-title>
+                    <h2>Add Movie</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form (ngSubmit)="addMovie()" class="admin-form">
+                    <mat-form-field appearance="fill" class="input-field">
+                        <mat-label>Movie Name</mat-label>
+                        <input matInput [(ngModel)]="movieName" name="movieName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="input-field">
+                        <mat-label>Theatre Name</mat-label>
+                        <input matInput [(ngModel)]="theaterName" name="theaterName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="input-field">
+                        <mat-label>Ticket Count</mat-label>
+                        <input matInput type="number" [(ngModel)]="addTicketCount" name="updateTicketCount" #ticketCount="ngModel" min="1" max="100" pattern="[0-9]*">
+                    </mat-form-field>
+
+                    <div class="button-container">
+                        <button mat-raised-button color="primary" type="submit" class="add-button"
+                            [disabled]="!movieName || !theaterName || addTicketCount < 1 || addTicketCount > 100">Add
+                            Movie</button>
+                    </div>
+                </form>
+            </mat-card-content>
+            <p class="success-message" *ngIf="message" (click)="closeMessage()">{{ message }}</p>
+        </mat-card>
+    </div>
+    <div class="admin-content">
+        <div class="admin-content-inner">
+            <mat-card class="admin-card">
+                <mat-card-header class="header">
+                    <mat-card-title>
+                        <h2>Update Movie Tickets</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form (ngSubmit)="updateMovieTickets()" class="admin-form">
+                        <mat-form-field appearance="fill" class="input-field">
+                            <mat-label>Movie Name</mat-label>
+                            <input matInput [(ngModel)]="updateMovieName" name="updateMovieName">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="input-field">
+                            <mat-label>Ticket Count</mat-label>
+                            <input matInput [(ngModel)]="updateTicketCount" name="updateTicketCount">
+                        </mat-form-field>
+
+                        <div class="button-container">
+                            <button mat-raised-button color="primary" type="submit" class="update-button"
+                                [disabled]="!updateMovieName || !updateTicketCount">Update
+                                Tickets</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <p class="success-message" *ngIf="updateTicketMessage" (click)="closeMessage()">{{ updateTicketMessage
+                    }}</p>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
